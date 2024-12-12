@@ -186,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function () {
         'meteringTypeCheckbox': 'gasMeteringTypeSubOptions',
         'commercialCheckbox': 'commercialSubOptions',
         'PRICheckbox': 'PRISubOptions',
-        'materialCheckbox': 'materialSubOptions',
         'WPOCCheckbox': 'WPOCSubOptions'
     };
 
@@ -207,8 +206,7 @@ function finishButton() {
         // ELECTRIC FORM ITEMS
         { id: 'electricCheckbox', label: 'Electric POC', formId: 'HVForm', category: 'Electric', subOptions: {
             'Design Document': [],
-            'Quote Letter': [],
-            'Diversion or Reinforcement Works': []
+            'Quote Letter': []
         }},
         { id: 'subCheckbox', label: 'Substation', formId: 'HVForm', category: 'Electric', subOptions: {
             'Substation Location': [],
@@ -238,30 +236,24 @@ function finishButton() {
         }},
 
         // GAS FORM ITEMS
-        { id: 'gasCompanyCheckbox', label: 'Gas company Reference', formId: 'MPForm', category: 'Gas'},
+        { id: 'PRICheckbox', label: 'PRI', formId: 'MPForm', category: 'Gas', subOptions: {
+            'Above Ground': [],
+            'Below Ground': []
+        }},
         { id: 'gasSupCheckbox', label: 'Gas Supplier', formId: 'MPForm', category: 'Gas'},
         { id: 'meteringTypeCheckbox', label: 'Metering Type', formId: 'MPForm', category: 'Gas', subOptions: {
             'Smart': [],
             'Dumb': []
         }},
-        { id: 'commercialCheckbox', label: 'Commercial Plots', formId: 'MPForm', category: 'Gas', subOptions: {
-            'Load for the commercial is missing': []
-        }},
-        { id: 'PRICheckbox', label: 'PRI', formId: 'MPForm', category: 'Gas', subOptions: {
-            'Above Ground': [],
-            'Below Ground': []
-        }},
+        { id: 'commercialCheckbox_Load_for_the_commercial_is_missing', label: 'Load for the commercial is missing', formId: 'MPForm', category: 'Gas'},
+        
 
         // WATER FORM ITEMS
         { id: 'waterCompanyCheckbox', label: 'Water company Reference', formId: 'NAVForm', category: 'Water'},
         { id: 'riskCheckbox', label: 'Risk Assessment', formId: 'NAVForm', category: 'Water'},
-        { id: 'floodCheckbox', label: 'Flood Risk', formId: 'NAVForm', category: 'Water'},
         { id: 'f10Checkbox', label: 'F10 Notification', formId: 'NAVForm', category: 'Water'},
         { id: 'EnvCheckbox', label: 'Environmental Report', formId: 'NAVForm', category: 'Water'},
-        { id: 'materialCheckbox', label: 'Pipe Material is not confirmed', formId: 'NAVForm', category: 'Water', subOptions: {
-            'PE/HPPE': [],
-            'Barrier Pipe (PEB)': []
-        }},
+        { id: 'TopoCheckbox', label: 'Topografical Survey', formId: 'NAVForm', category: 'Water'},
         { id: 'WPOCCheckbox', label: 'Water POC Plan', formId: 'NAVForm', category: 'Water', subOptions: {
             'Design Document': [],
             'POC Letter': []
@@ -383,7 +375,7 @@ const validateForm = () => {
         { id: 'siteLayout', label: 'Site Layout in DWG' },
         { id: 'drainage', label: 'Drainage' },
         { id: 'meterPos', label: 'Meter Position' },
-        { id: 'assValue', label: 'Asset Value in PDF' },
+        { id: 'assValue', label: 'Asset Value' },
         { id: 'conPlan', label: 'Conveyancing Plan' },
         { id: 'accSchedule', label: 'Accommodation Schedule' },
         { id: 's38', label: 'S38 Plan' },
@@ -392,7 +384,7 @@ const validateForm = () => {
     ];
 
     const subOptions = {
-        drainage: ['Drainage DWG file', 'Drainage PDF file', 'Permeable Pavement', 'Culverts', 'Attenuation Tanks'],
+        drainage: ['Drainage DWG file', 'Drainage PDF file'],
         meterPos: ['Meter position DWG file', 'Meter position PDF file']
     };
 
@@ -665,3 +657,22 @@ document.getElementById('menuToggle').addEventListener('click', function () {
         navigationMenu.style.display = 'block';
     }
 });
+
+// LOGICA PARA MANEJAR LA APARICION O NO DE CIERTOS ELEMENTOS
+
+
+
+function toggleSection(sectionId, include) {
+    const section = document.getElementById(sectionId);
+    const checkboxes = section.querySelectorAll('input[type="checkbox"]');
+
+    if (include) {
+        section.style.display = 'block'; // Mostrar sección
+    } else {
+        section.style.display = 'none'; // Ocultar sección
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = true; // Marca todos los checkboxes (directos e hijos)
+        });
+    }
+}
+

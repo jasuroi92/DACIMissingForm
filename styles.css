@@ -79,35 +79,6 @@ body {
   color: #333;
 }
 
-/* STYLE FOR LINK URL */
-
-.link {
-  display: inline-block;
-  padding: 3px;
-  background-color: rgb(168, 168, 168);
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  margin: 5px;
-}
-
-.link:hover {
-  background-color: #44AF03;
-}
-
-.link-flood {
-  display: inline-block;
-  padding: 3px;
-  background-color: rgb(168, 168, 168);
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.link-flood:hover {
-  background-color: #44AF03;
-}
-
 /* STYLE FOR NEXT BUTTON */
 
 .next-btn {
@@ -461,4 +432,11 @@ button:hover, .back-button:hover {
 main {
   padding: 20px;
   margin-top: 60px; /* Altura del header */
+}
+
+
+/* STYLE FOR SECTIONS */
+
+#commercialOptions {
+  display: none;
 }
