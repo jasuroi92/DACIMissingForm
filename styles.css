@@ -1,0 +1,464 @@
+/* STYLE FOR BODY */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #44AF03;
+}
+
+/* STYLE FOR H1 TITLE */
+
+.principal-title h1 {
+  text-align: center;
+  color: #205201;
+}
+
+/* STYLE FOR CLASS CONTAINER */
+
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+}
+.container h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+.container label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: block;
+  color: #555;
+}
+.container input[type="text"], input[type="number"], input[type="date"] {
+  width: 90%;
+  padding: 6px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* STYLE FOR LEGAL DETAILS */
+
+.fieldset-container {
+  font-family: Arial, sans-serif;
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  gap: 8px;
+  font-size: 16px;
+}
+
+/* MANDATORY INFO STYLE */
+
+.mandatory-info {
+  background: white;
+  padding: 20px 20px 20px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1fr, 1fr);
+  gap: 18px;
+}
+
+.mandatory-info h3 {
+  position: absolute;
+  margin-left: 120px;
+  font-size: 24px;
+  margin-top: -5px;
+  color: #333;
+}
+
+/* STYLE FOR LINK URL */
+
+.link {
+  display: inline-block;
+  padding: 3px;
+  background-color: rgb(168, 168, 168);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.link:hover {
+  background-color: #44AF03;
+}
+
+.link-flood {
+  display: inline-block;
+  padding: 3px;
+  background-color: rgb(168, 168, 168);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.link-flood:hover {
+  background-color: #44AF03;
+}
+
+/* STYLE FOR NEXT BUTTON */
+
+.next-btn {
+  text-align: center;
+}
+
+.hvr-grow {
+  margin: 10px 10px 10px 10px;
+  border: solid 2px;
+  color: white;
+  padding: 14px 28px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  background-color: rgb(168, 168, 168);
+}
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  background-color: #46a049;
+}
+
+/* STYLE FOR MANDATORY INFO PRINT MISSING INFO */
+
+.missingInfo {
+  display: none;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 100%;
+}
+
+/* STYLE FOR ELECTRIC BUTTONS */
+
+.sec-btn-align {
+  display: none;
+  text-align: center;
+}
+
+.sec-btn {
+  margin: 10px 10px 10px 10px;
+  border: solid 2px;
+  color: white;
+  padding: 14px 28px;
+  cursor: pointer;
+  border-radius: 5px;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  background-color: #8e8e8e;
+}
+
+.sec-btn:hover, .sec-btn:focus, .sec-btn:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  background-color: rgb(59, 160, 66);
+}
+
+.sub-elec {
+  margin: 10px 10px 10px 10px;
+  border: solid 2px;
+  color: white;
+  padding: 14px 28px;
+  cursor: pointer;
+  border-radius: 5px;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  background-color: #04AA6D;
+}
+
+.sub-elec:hover, .sub-elec:focus, .sub-elec:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  background-color: red;
+}
+
+/* STYLE FOR GAS BUTTONS */
+
+.sub-gas {
+  margin: 10px 10px 10px 10px;
+  border: solid 2px;
+  color: white;
+  padding: 14px 28px;
+  cursor: pointer;
+  border-radius: 5px;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  background-color: #04AA6D;
+}
+
+.sub-gas:hover, .sub-gas:focus, .sub-gas:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  background-color: #f0eb52;
+}
+
+/* STYLE FOR WATER BUTTONS */
+
+.sub-wat {
+  margin: 10px 10px 10px 10px;
+  border: solid 2px;
+  color: white;
+  padding: 14px 28px;
+  cursor: pointer;
+  border-radius: 5px;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  background-color: #04AA6D;
+}
+
+.sub-wat:hover, .sub-wat:focus, .sub-wat:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  background-color: #4db7e8;
+}
+
+
+/* STYLE FOR SUB BUTTONS FROM ELEC, GAS & WATER */
+
+.sub-btn {
+  display: none;
+  text-align: center;
+}
+
+/* STYLE FOR CONFIRM UTILITIES BUTTON */
+
+.utilities-btn {
+  text-align: center;
+  display: none;
+}
+
+/* STYLE FOR ALL FORMS */
+
+#HVForm, #NAVForm, #MPForm {
+  display: none;
+}
+
+.form-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1fr, 1fr);
+  gap: 18px;
+}
+
+.form-container legend {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.form-container input[type="number"] {
+  width: 15%;
+}
+
+/* STYLE FOR UTILITIES INFO PRINT MISSING INFO */
+
+.missingUtilitiesInfo {
+  color: #333;
+  display: none;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  width: 100%;
+}
+
+/* STYLE FOR NESTED ITEMS */
+
+#MSDBSubOptions, #PVSubOptions, #SLSubOptions, #addSubOptions, #substationSubOptions, #elecPOCSubOptions {
+  margin-left: 20px;
+}
+
+#drainageSubOptions, #meterSubOptions { 
+  margin-left: 20px;
+}
+
+#WPOCSubOptions, #materialSubOptions {
+  margin-left: 20px;
+}
+
+#gasSupSubOptions, #gasMeterTypeSubOptions, #commercialSubOptions, #gasMeteringTypeSubOptions, #PRISubOptions {
+  margin-left: 20px;
+}
+
+#pumpSubOptions, #TBSSubOptions, #FPSubOptions, #HOSubOptions, #MSDBMeterSubOptions, #EVCSubOptions, #landlordSubOptions, #subEnclosureSubOptions, #comSubOptions {
+  margin-left: 30px;
+}
+
+/* STYLE FOR ITEM LIST*/
+
+ul {
+  font-style: normal;
+  text-decoration: solid;
+  list-style-type: none;
+}
+
+li {
+  margin-left: 10px;
+  font-style: normal;
+  text-decoration: solid;
+  list-style-type: disc;
+}
+
+/* STYLE FOR HEADER */
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+
+/* Header Principal */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #7C7C7C;
+  color: white;
+  padding: 15px 15px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Menú desplegable */
+.menu-container {
+  position: relative;
+}
+
+.menu-toggle {
+  background-color: #205201;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.menu-toggle:hover {
+  background-color: #44AF03;
+}
+
+.navigation {
+  position: absolute;
+  top: 40px; /* Justo debajo del botón */
+  left: 0;
+  width: 200px;
+  background-color: #7C7C7C;
+  color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: none; /* Oculto por defecto */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+.navigation li {
+  margin: 5px 0;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  display: block;
+  border-radius: 4px;
+}
+
+.navigation a:hover {
+  background-color: #44AF03;
+  color: #333;
+}
+
+/* Botones de Acción */
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
+button, .back-button {
+  border: none;
+  background-color: #205201;
+  color: white;
+  padding: 8px 18px;
+  margin-right: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, .back-button:hover {
+  background-color: #44AF03;
+}
+
+/* Espaciado del contenido principal */
+main {
+  padding: 20px;
+  margin-top: 60px; /* Altura del header */
+}

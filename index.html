@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" href="indexStyles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="indexScript.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        
+        <img class="daci-logo" src="./daciLogo.png" alt="DACI Logo">
+
+        <h1>Missing Info Form</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Name Surname" autocomplete="additional-name">
+        <button type="button" onclick="nuevoProyecto()">New Project</button>
+        <label>
+        <input type="file" id="loadFormFile" accept=".json" placeholder="Select File"><br>
+        </label>
+        <button type="button" id="loadFormButton">Load Project</button>
+    </div>
+</body>
+</html>
