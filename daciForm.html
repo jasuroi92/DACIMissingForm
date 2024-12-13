@@ -24,11 +24,12 @@
             </ul>
         </nav>
         </div>
-        <div id="indexBtn"><button type="button" id="returnButton">Return to Index</button></div>
+        <div id="indexBtn"><button type="button" id="returnButton">Create New File</button></div>
+        <div id="returnBtn"><button type="button" id="backToTop" onclick="backToTop()">Back to Top</button></div>
         <div class="save-btn"><button type="button" id="saveFormButton">Save Form</button></div>
     </header>  
     <main>
-    <div class="principal-title"><h1>DACI Projects Missing Information</h1></div>
+    <div class="principal-title" id="Top"><h1>DACI Projects Missing Information</h1></div>
 
 <!--PROJECT INFORMATION FIELDSET-->
     <div class="container">
@@ -43,6 +44,7 @@
                     <label>Client Reference <input type="text" value="" id="clientRef"></label>
                     <label>Designer Name <input type="text" value="" id="designerName"></label>
                     <label>Address <input type="text" value="" id="adress"></label>
+                    <label>Comments<br><textarea name="comments" id="comments" cols="50" rows="8"></textarea></label>
                     <label>Future Development</label>
                     <label><input type="radio" value="Yes" name="futureDev" id="futureDev1">Yes
                     <input type="radio" value="No" name="futureDev" id="futureDev2">No</label>

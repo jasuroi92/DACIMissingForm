@@ -39,6 +39,15 @@ document.addEventListener('DOMContentLoaded', function () {
         Object.keys(formData).forEach(key => {
             const value = formData[key];
 
+            // Manejar el estado de los elementos con IDs específicos
+            if (key === 'POCPlanSection' || key === 'PRISection' || key === 'substationEnclosureSection') {
+                const section = document.getElementById(key);
+                if (section) {
+                    section.style.display = value === 'block' ? 'block' : 'none';
+                }
+                return; // Salir para evitar conflictos con la lógica de inputs
+            }
+
             // Busca inputs por name o id
             const radios = document.querySelectorAll(`input[name="${key}"]`);
             if (radios.length > 0) {
@@ -104,6 +113,94 @@ function hasCheckedCheckboxes(formId) {
     const checkboxes = form.querySelectorAll('input[type="checkbox"]');
     return Array.from(checkboxes).some(checkbox => checkbox.checked);
 }
+
+
+/*document.addEventListener('DOMContentLoaded', function () {
+    const visibleForms = JSON.parse(localStorage.getItem('visibleForms')) || {};
+
+    Object.keys(visibleForms).forEach(formId => {
+        if (visibleForms[formId]) {
+            const form = document.getElementById(`${formId.toLowerCase()}Form`); // Ej: 'electricForm', 'gasForm'
+            if (form) {
+                form.style.display = 'block'; // Mostrar el formulario
+            }
+        }
+    });
+
+    // Si tienes lógica para cargar datos en los formularios, colócala aquí
+    const loadedData = localStorage.getItem('loadedFormData');
+
+    if (loadedData) {
+        const formData = JSON.parse(loadedData);
+
+        Object.keys(formData).forEach(key => {
+            const value = formData[key];
+
+            // Busca inputs por name o id
+            const radios = document.querySelectorAll(`input[name="${key}"]`);
+            if (radios.length > 0) {
+                // Verifica y marca el radio correspondiente
+                radios.forEach(radio => {
+                    if (radio.value === value) {
+                        radio.checked = true;
+                    }
+                });
+            } else {
+                // Maneja otros tipos de inputs
+                const input = document.getElementById(key);
+                if (input) {
+                    if (input.type === 'checkbox') {
+                        input.checked = value;
+                    } else {
+                        input.value = value;
+                    }
+                }
+            }
+        });
+
+        // Inicia la función validateForm
+        validateForm();
+
+        // Condicionales para activar los toggles si hay al menos un checkbox marcado
+        if (hasCheckedCheckboxes('HVForm')) {
+            toggleSubButtonsElec('electricSubBtns');
+        }
+        if (hasCheckedCheckboxes('MPForm')) {
+            toggleSubButtonsGas('gasSubBtns');
+        }
+        if (hasCheckedCheckboxes('NAVForm')) {
+            toggleSubButtonsWater('waterSubBtns');
+        }
+
+        // Inicia la función finishButton
+        finishButton();
+
+        // Actualiza el DOM si es necesario (por ejemplo, opciones anidadas)
+        updateNestedOptions();
+
+        // Limpia el localStorage después de cargar datos
+        localStorage.removeItem('loadedFormData');
+    }
+});
+
+function updateNestedOptions() {
+    const parentCheckboxes = document.querySelectorAll('.parent'); // Busca checkboxes con clase 'parent'
+    parentCheckboxes.forEach(parentCheckbox => {
+        const nestedOptions = document.getElementById(parentCheckbox.dataset.target); // Usa un atributo data para enlazar
+        if (nestedOptions) {
+            nestedOptions.style.display = parentCheckbox.checked ? 'block' : 'none';
+        }
+    });
+}
+
+// Función para verificar si hay checkboxes marcados en un formulario específico
+function hasCheckedCheckboxes(formId) {
+    const form = document.getElementById(formId);
+    if (!form) return false;
+
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+    return Array.from(checkboxes).some(checkbox => checkbox.checked);
+}*/
 
 
 // FUNCION UNIVERSAL PARA LAS OPCIÓNES DESPLEGABLES DE CHECKBOX Y DE RADIO
@@ -622,7 +719,61 @@ function toggleWaterForm(formType) {
 
 // FUNCIÓN PARA GUARDAR LA INFORMACIÓN DEL FORM Y CONVERTIRLA EN UN ARCHIVO .JSON
 
+// FUNCIÓN PARA GUARDAR LA INFORMACIÓN DEL FORM Y CONVERTIRLA EN UN ARCHIVO .JSON
+
 document.getElementById('saveFormButton').addEventListener('click', function () {
+    const formData = {};
+    const inputs = document.querySelectorAll('input, textarea, select');
+
+    // Recopilar los datos del formulario
+    inputs.forEach(input => {
+        if (input.type === 'checkbox') {
+            formData[input.id] = input.checked;
+        } else if (input.type === 'radio') {
+            if (input.checked) {
+                console.log(`Radio ${input.name}: ${input.value}`);
+                formData[input.name] = input.value;
+            }
+        } else {
+            formData[input.id] = input.value;
+        }
+    });
+
+    // Evaluar el estado de los IDs
+    const sections = ['POCPlanSection', 'PRISection', 'substationEnclosureSection'];
+    const sectionStates = {};
+
+    sections.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            const displayStyle = window.getComputedStyle(element).display;
+            sectionStates[id] = displayStyle; // Guardar el estado ('none' o 'block')
+        }
+    });
+
+    // Agregar los estados de las secciones al objeto formData
+    formData.sectionStates = sectionStates;
+
+    console.log(formData);
+
+    // Pedir al usuario el nombre del archivo
+    const fileName = prompt("Please, enter a name for the file (Without Extension).:", "formData");
+    if (fileName) {
+        const dataStr = JSON.stringify(formData, null, 2);
+        const blob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${fileName}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+    } else {
+        alert("The file wasn't saved.");
+    }
+});
+
+
+/*document.getElementById('saveFormButton').addEventListener('click', function () {
     const formData = {};
     const inputs = document.querySelectorAll('input, textarea, select');
 
@@ -655,7 +806,7 @@ document.getElementById('saveFormButton').addEventListener('click', function () 
     } else {
         alert("Se canceló el guardado del archivo.");
     }
-});
+});*/
 
 
 // LOGICA PARA EL MENU DESPLEGABLE DEL HEADER
@@ -668,6 +819,16 @@ document.getElementById('menuToggle').addEventListener('click', function () {
         navigationMenu.style.display = 'block';
     }
 });
+
+function backToTop() {
+    const title = document.getElementById("Top"); // Asegúrate de usar comillas para el ID
+    if (title) {
+        title.scrollIntoView({ behavior: 'smooth' }); // Desplazamiento suave hacia el elemento
+    } else {
+        console.error("El elemento con ID 'Top' no existe.");
+    }
+}
+
 
 // LOGICA PARA MANEJAR LA APARICION O NO DE CIERTOS ELEMENTOS
 
