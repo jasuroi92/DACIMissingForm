@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,7 +133,13 @@
                                 <label><input type="radio" id="subCheckbox_Substation_Enclosure_Brick_Built" name="subEnclosureCheckboxOptions" value="Brick Built"> Brick Built</label>
                             </div>
                         </div>
-                    </div><label><input type="checkbox" name="electric" id="MSDBCheckbox" value="MSDB" onclick="handleSubOptions('MSDBCheckbox', 'MSDBSubOptions')"> MSDB</label>
+                        <div id="MSDBSection">
+                            <!--Añadir aquí la lógica para decidir si hay o no MSDB-->
+                            <label>MSDB's</label><br>
+                            <label><input type="radio" name="includeMSDB" value="yes" onclick="toggleSection('MSDBSubOptions', true)"> Yes</label>
+                            <label><input type="radio" name="includeMSDB" value="no" onclick="toggleSection('MSDBSubOptions', false)"> No</label>
+                        </div>
+                        </div><label><input type="checkbox" name="electric" id="MSDBCheckbox" value="MSDB" onclick="handleSubOptions('MSDBCheckbox', 'MSDBSubOptions')"> MSDB</label>
                         <div id="MSDBSubOptions">
                             <label><input type="checkbox" id="MSDBCheckbox_Floor_plans_in_DWG" value="Floor plans in DWG"> Floor plans in DWG</label><br>
                             <label><input type="checkbox" id="MSDBCheckbox_MSDB_location" value="MSDB location"> MSDB location</label><br>
