@@ -171,20 +171,9 @@ document.addEventListener('DOMContentLoaded', function () {
         'electricCheckbox': 'elecPOCSubOptions',
         'subCheckbox': 'substationSubOptions',
         'subCheckbox_Substation_Enclosure': 'subEnclosureSubOptions',
-        'MSDBCheckbox': 'MSDBSubOptions',
         'MSDBCheckbox_Meter_location': 'MSDBMeterSubOptions',
-        'PVCheckbox': 'PVSubOptions',
-        'SLCheckbox': 'SLSubOptions',
-        'addCheckbox': 'addSubOptions',
-        'addCheckbox_TBS_(Temporary_Building_Supply)': 'TBSSubOptions',
-        'addCheckbox_FP_(Feeder_Pilar)': 'FPSubOptions',
-        'addCheckbox_HO_(Hyper_Optic)': 'HOSubOptions',
-        'addCheckbox_EVC_(Electric_Vehicle_Charger)': 'EVCSubOptions',
-        'addCheckbox_Pumping_Station': 'pumpSubOptions',
-        'addCheckbox_Commercial_Unit': 'comSubOptions',
         'gasSupCheckbox': 'gasSupSubOptions',
         'meteringTypeCheckbox': 'gasMeteringTypeSubOptions',
-        'commercialCheckbox': 'commercialSubOptions',
         'PRICheckbox': 'PRISubOptions',
         'WPOCCheckbox': 'WPOCSubOptions'
     };
@@ -226,13 +215,35 @@ function finishButton() {
             'Street lights plan in DWG': [],
             'Street lights type (public & private)': []
         }},
-        { id: 'addCheckbox', label: 'Additional Loads', formId: 'HVForm', category: 'Electric', subOptions: {
-            'TBS (Temporary Building Supply)': ['Location of TBS','TBS Load','Phases of supply for TBS'],
-            'FP (Feeder Pilar)': ['Location of FP','FP Load','Phases of supply for FP'],
-            'HO (Hyper Optic)': ['Location of HO','HO Load','Phases of supply for HO'],
-            'EVC (Electric Vehicle Charger)': ['Fast Type','Slow Type'],
-            'Pumping Station': ['Location of Pumping Station','Data Sheet','Phases of supply for Pump'],
-            'Commercial Unit': ['Location of Commercial','Load for Commercial','Phases of supply for commercial','Building Construction Type']
+        { id: 'addCheckbox_TBS_(Temporary_Building_Supply)', label: 'TBS (Temporary Building Supply)', formId: 'HVForm', category: 'Electric', subOptions: {
+            'Location of TBS': [],
+            'TBS Load': [],
+            'Phases of supply for TBS': []
+        }},
+        { id: 'addCheckbox_FP_(Feeder_Pilar)', label: 'FP (Feeder Pilar)', formId: 'HVForm', category: 'Electric', subOptions: {
+            'Location of FP': [],
+            'FP Load': [],
+            'Phases of supply for FP': []
+        }},
+        { id: 'addCheckbox_HO_(Hyper_Optic)', label: 'HO (Hyper Optic)', formId: 'HVForm', category: 'Electric', subOptions: {
+            'Location of HO': [],
+            'HO Load': [],
+            'Phases of supply for HO': []
+        }},
+        { id: 'addCheckbox_EVC_(Electric_Vehicle_Charger)', label: 'EVC (Electric Vehicle Charger)', formId: 'HVForm', category: 'Electric', subOptions: {
+            'Fast Type': [],
+            'Slow Type': []
+        }},
+        { id: 'addCheckbox_Pumping_Station', label: 'Pumping Station', formId: 'HVForm', category: 'Electric', subOptions: {
+            'Location of Pumping Station': [],
+            'Data Sheet': [],
+            'Phases of supply for Pump': []
+        }},
+        { id: 'addCheckbox_Commercial_Unit', label: 'Commercial Unit', formId: 'HVForm', category: 'Electric', subOptions: {
+            'Location of Commercial': [],
+            'Load for Commercial': [],
+            'Phases of supply for the commercial': [],
+            'Building Construction Type': []
         }},
 
         // GAS FORM ITEMS
@@ -665,14 +676,23 @@ document.getElementById('menuToggle').addEventListener('click', function () {
 function toggleSection(sectionId, include) {
     const section = document.getElementById(sectionId);
     const checkboxes = section.querySelectorAll('input[type="checkbox"]');
+    const radios = section.querySelectorAll('input[type="radio"]');
 
     if (include) {
         section.style.display = 'block'; // Mostrar sección
     } else {
         section.style.display = 'none'; // Ocultar sección
+        
+        // Marcar todos los checkboxes como seleccionados
         checkboxes.forEach(checkbox => {
-            checkbox.checked = true; // Marca todos los checkboxes (directos e hijos)
+            checkbox.checked = true;
         });
+
+        // Asegurarse de que al menos un radio esté seleccionado
+        if (radios.length > 0) {
+            radios[0].checked = true; // Selecciona el primer botón de radio
+        }
     }
 }
+
 

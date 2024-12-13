@@ -1,7 +1,7 @@
 function nuevoProyecto() {
     const username = document.getElementById('username').value;
     if (!username) {
-        alert('Please, enter your username.');
+        alert('Please, enter a username.');
         return;
     }
     localStorage.setItem('username', username);
@@ -19,7 +19,7 @@ document.getElementById('loadFormButton').addEventListener('click', function () 
     const file = fileInput.files[0];
 
     if (!file) {
-        alert('Please, upload a file to charge.');
+        alert('Please, select a file.');
         return;
     }
 

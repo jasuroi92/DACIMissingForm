@@ -287,8 +287,9 @@ body {
 
 /* STYLE FOR NESTED ITEMS */
 
-#MSDBSubOptions, #PVSubOptions, #SLSubOptions, #addSubOptions, #substationSubOptions, #elecPOCSubOptions {
+#MSDBSubOptions, #PVSubOptions, #SLSubOptions, #TBSSubOptions, #FPSubOptions, #HOSubOptions, #EVCSubOptions, #pumpSubOptions, #comSubOptions {
   margin-left: 20px;
+  display: none;
 }
 
 #drainageSubOptions, #meterSubOptions { 
@@ -303,7 +304,11 @@ body {
   margin-left: 20px;
 }
 
-#pumpSubOptions, #TBSSubOptions, #FPSubOptions, #HOSubOptions, #MSDBMeterSubOptions, #EVCSubOptions, #landlordSubOptions, #subEnclosureSubOptions, #comSubOptions {
+#MSDBlabel, #PVlabel, #SLlabel, #TBSlabel, #FPlabel, #HOlabel, #EVClabel, #pumplabel, #comlabel {
+  display: none;
+}
+
+#subEnclosureSubOptions, #MSDBMeterSubOptions {
   margin-left: 30px;
 }
 

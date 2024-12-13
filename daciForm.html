@@ -123,6 +123,7 @@
                             <label><input type="checkbox" id="electricCheckbox_Design_Document"  value="Design Document"> Design Document</label><br>
                             <label><input type="checkbox" id="electricCheckbox_Quote_Letter" value="Quote Letter"> Quote Letter</label><br>
                         </div>
+                        
                         <div id="substationEnclosureSection">
                         <label><input type="checkbox" name="electric" id="subCheckbox" value="Substation" onclick="handleSubOptions('subCheckbox','substationSubOptions')"> Substation</label><br>
                         <div id="substationSubOptions"><br>
@@ -133,13 +134,13 @@
                                 <label><input type="radio" id="subCheckbox_Substation_Enclosure_Brick_Built" name="subEnclosureCheckboxOptions" value="Brick Built"> Brick Built</label>
                             </div>
                         </div>
-                        <div id="MSDBSection">
-                            <!--Añadir aquí la lógica para decidir si hay o no MSDB-->
-                            <label>MSDB's</label><br>
-                            <label><input type="radio" name="includeMSDB" value="yes" onclick="toggleSection('MSDBSubOptions', true)"> Yes</label>
-                            <label><input type="radio" name="includeMSDB" value="no" onclick="toggleSection('MSDBSubOptions', false)"> No</label>
                         </div>
-                        </div><label><input type="checkbox" name="electric" id="MSDBCheckbox" value="MSDB" onclick="handleSubOptions('MSDBCheckbox', 'MSDBSubOptions')"> MSDB</label>
+
+                        <div id="MSDBSection">
+                        <label>MSDB's</label><br>
+                        <label><input type="radio" name="includeMSDB" value="yes" onclick="toggleSection('MSDBSubOptions', true)">Yes</label>
+                        <label><input type="radio" name="includeMSDB" value="no" onclick="toggleSection('MSDBSubOptions', false)">No</label>
+                        <label id="MSDBlabel"><input type="checkbox" name="electric" id="MSDBCheckbox" value="MSDB" onclick="handleSubOptions('MSDBCheckbox', 'MSDBSubOptions')" checked> MSDB</label>
                         <div id="MSDBSubOptions">
                             <label><input type="checkbox" id="MSDBCheckbox_Floor_plans_in_DWG" value="Floor plans in DWG"> Floor plans in DWG</label><br>
                             <label><input type="checkbox" id="MSDBCheckbox_MSDB_location" value="MSDB location"> MSDB location</label><br>
@@ -150,49 +151,95 @@
                                 <label><input type="radio" name="MeterLocation" id="MSDBCheckbox_Meter_location_Communaly_in_riser_rooms_at_each_floor" value="Communaly in riser rooms at each floor"> Communaly in riser rooms at each floor</label><br>
                                 <label><input type="radio" name="MeterLocation" id="MSDBCheckbox_Meter_location_On_each_flat" value="On each flat"> On each flat</label>
                             </div>
-                    </div>
-                        <label><input type="checkbox" name="electric" id="PVCheckbox" value="PV Panels" onclick="handleRadioSubOptions('PVCheckbox','PVSubOptions')"> PV Panels</label>
+                        </div>
+                        </div>
+                        
+                        <div id="PVSection">
+                            <label>PV Panels</label><br>
+                            <label><input type="radio" name="includePV" value="yes" onclick="toggleSection('PVSubOptions', true)">Yes</label>
+                            <label><input type="radio" name="includePV" value="no" onclick="toggleSection('PVSubOptions', false)">No</label>
+                            <label id="PVlabel"><input type="checkbox" name="electric" id="PVCheckbox" value="PV Panels" onclick="handleRadioSubOptions('PVCheckbox','PVSubOptions')" checked> PV Panels</label>
                         <div id="PVSubOptions">
                             <label><input type="radio" id="PVCheckbox_With_Export_load" name="PVCheckboxOptions" value="With Export load"> With Export load</label><br>   
                             <label><input type="radio" id="PVCheckbox_Not_Export" name="PVCheckboxOptions" value="Not Export"> Not export</label>
                         </div>
-                        <label><input type="checkbox" name="electric" id="SLCheckbox" value="Street Lights" onclick="handleSubOptions('SLCheckbox','SLSubOptions')"> Street Lights</label>
+                        </div>
+                        
+                        <div id="SLSection">
+                        <label>Street Lights</label><br>
+                        <label><input type="radio" name="includeSL" value="yes" onclick="toggleSection('SLSubOptions', true)">Yes</label>
+                        <label><input type="radio" name="includeSL" value="no" onclick="toggleSection('SLSubOptions', false)">No</label>
+                        <label id="SLlabel"><input type="checkbox" name="electric" id="SLCheckbox" value="Street Lights" onclick="handleSubOptions('SLCheckbox','SLSubOptions')" checked> Street Lights</label>
                         <div id="SLSubOptions">
                             <label><input type="checkbox" id="SLCheckbox_Street_lights_plan_in_DWG" name="SLCheckboxOptions" value="Street lights plan in DWG"> Street lights plan in DWG</label><br>
                             <label><input type="checkbox" id="SLCheckbox_Street_lights_type_(public_&_private)" name="SLCheckboxOptions" value="Street lights type (public & private)"> Street lights type (public & private)</label><br>
+                        </div> 
                         </div>
-                        <label><input type="checkbox" name="electric" id="addCheckbox" value="Additional Loads" onclick="handleSubOptions('addCheckbox','addSubOptions')"> Additional Loads</label>
-                        <div id="addSubOptions">
-                            <label><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_TBS_(Temporary_Building_Supply)" value="TBS (Temporary Building Supply)" onclick="handleSubOptions('addCheckbox_TBS_(Temporary_Building_Supply)','TBSSubOptions')"> TBS (Temporary Building Supply)</label>
-                            <div id="TBSSubOptions">
-                                <label><input type="checkbox" id="addCheckbox_TBS_(Temporary_Building_Supply)_Location_of_TBS" name="TBSSubCheckboxOptions" value="Location of TBS"> Location of TBS</label><br>
-                                <label><input type="checkbox" id="addCheckbox_TBS_(Temporary_Building_Supply)_TBS_Load" name="TBSSubCheckboxOptions" value="TBS Load"> TBS Load</label><br>
-                                <label><input type="checkbox" id="addCheckbox_TBS_(Temporary_Building_Supply)_Phases_of_supply_for_TBS" name="TBSSubCheckboxOptions" value="Phases of supply for TBS"> Phases of supply</label>
-                            </div><br>    
-                        <label><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_FP_(Feeder_Pilar)" value="FP (Feeder Pilar)" onclick="handleSubOptions('addCheckbox_FP_(Feeder_Pilar)','FPSubOptions')"> FP (Feeder Pilar)</label>
+
+                        <div id="TBSSection">
+                        <label>TBS (Temporary Building Supply)</label><br>
+                        <label><input type="radio" name="includeTBS" value="yes" onclick="toggleSection('TBSSubOptions', true)">Yes</label>
+                        <label><input type="radio" name="includeTBS" value="no" onclick="toggleSection('TBSSubOptions', false)">No</label>
+                        <label id="TBSlabel"><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_TBS_(Temporary_Building_Supply)" value="TBS (Temporary Building Supply)" onclick="handleSubOptions('addCheckbox_TBS_(Temporary_Building_Supply)','TBSSubOptions')" checked> TBS (Temporary Building Supply)</label><br>
+                        <div id="TBSSubOptions">
+                            <label><input type="checkbox" id="addCheckbox_TBS_(Temporary_Building_Supply)_Location_of_TBS" name="TBSSubCheckboxOptions" value="Location of TBS"> Location of TBS</label><br>
+                            <label><input type="checkbox" id="addCheckbox_TBS_(Temporary_Building_Supply)_TBS_Load" name="TBSSubCheckboxOptions" value="TBS Load"> TBS Load</label><br>
+                            <label><input type="checkbox" id="addCheckbox_TBS_(Temporary_Building_Supply)_Phases_of_supply_for_TBS" name="TBSSubCheckboxOptions" value="Phases of supply for TBS"> Phases of supply</label>
+                        </div> 
+                        </div>
+                        
+                        <div id="FPSection">
+                        <label>FP (Feeder Pilar)</label><br>
+                        <label><input type="radio" name="includeFP" value="yes" onclick="toggleSection('FPSubOptions', true)">Yes</label>
+                        <label><input type="radio" name="includeFP" value="no" onclick="toggleSection('FPSubOptions', false)">No</label>
+                        <label id="FPlabel"><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_FP_(Feeder_Pilar)" value="FP (Feeder Pilar)" onclick="handleSubOptions('addCheckbox_FP_(Feeder_Pilar)','FPSubOptions')" checked> FP (Feeder Pilar)</label><br>
                         <div id="FPSubOptions">
                             <label><input type="checkbox" id="addCheckbox_FP_(Feeder_Pilar)_Location_of_FP" name="FPSubCheckboxOptions" value="Location of FP"> Location of FP</label><br>
                             <label><input type="checkbox" id="addCheckbox_FP_(Feeder_Pilar)_FP_Load" name="FPSubCheckboxOptions" value="FP Load"> FP Load</label><br>
                             <label><input type="checkbox" id="addCheckbox_FP_(Feeder_Pilar)_Phases_of_supply_for_FP" name="FPSubCheckboxOptions" value="Phases of supply for FP"> Phases of supply</label>
-                        </div><br>
-                        <label><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_HO_(Hyper_Optic)" value="HO (Hyper Optic)" onclick="handleSubOptions('addCheckbox_HO_(Hyper_Optic)','HOSubOptions')"> HO (Hyper Optic)</label><br>
+                        </div>
+                        </div>
+
+                        <div id="HOSection">
+                        <label>HO (Hyper Optic)</label><br>
+                        <label><input type="radio" name="includeHO" value="yes" onclick="toggleSection('HOSubOptions', true)">Yes</label>
+                        <label><input type="radio" name="includeHO" value="no" onclick="toggleSection('HOSubOptions', false)">No</label>
+                        <label id="HOlabel"><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_HO_(Hyper_Optic)" value="HO (Hyper Optic)" onclick="handleSubOptions('addCheckbox_HO_(Hyper_Optic)','HOSubOptions')" checked> HO (Hyper Optic)</label>
                         <div id="HOSubOptions">
                             <label><input type="checkbox" id="addCheckbox_HO_(Hyper_Optic)_Location_of_HO" name="FPSubCheckboxOptions" value="Location of HO"> Location of HO</label><br>
                             <label><input type="checkbox" id="addCheckbox_HO_(Hyper_Optic)_HO_Load" name="FPSubCheckboxOptions" value="HO Load"> HO Load</label><br>
-                            <label><input type="checkbox" id="addCheckbox_HO_(Hyper_Optic)_Phases_of_supply_for_HO" name="FPSubCheckboxOptions" value="Phases of supply for HO"> Phases of supply</label><br><br>
+                            <label><input type="checkbox" id="addCheckbox_HO_(Hyper_Optic)_Phases_of_supply_for_HO" name="FPSubCheckboxOptions" value="Phases of supply for HO"> Phases of supply</label>
                         </div>
-                        <label><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_EVC_(Electric_Vehicle_Charger)" value="EVC (Electric Vehicle Charger)" onclick="handleRadioSubOptions('addCheckbox_EVC_(Electric_Vehicle_Charger)', 'EVCSubOptions')"> EVC (Electric Vehicle Charger)</label>
+                        </div>
+
+                        <div id="EVCSection">
+                        <label>EVC (Electric Vehicle Charger)</label><br>
+                        <label><input type="radio" name="includeEVC" value="yes" onclick="toggleSection('EVCSubOptions', true)">Yes</label>
+                        <label><input type="radio" name="includeEVC" value="no" onclick="toggleSection('EVCSubOptions', false)">No</label>
+                        <label id="EVClabel"><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_EVC_(Electric_Vehicle_Charger)" value="EVC (Electric Vehicle Charger)" onclick="handleRadioSubOptions('addCheckbox_EVC_(Electric_Vehicle_Charger)', 'EVCSubOptions')" checked> EVC (Electric Vehicle Charger)</label>
                         <div id="EVCSubOptions">
                             <label><input type="radio" id="addCheckbox_EVC_(Electric_Vehicle_Charger)_Fast_Type" name="EVCSubCheckboxOptions" value="Fast Type"> Fast Type</label><br>
                             <label><input type="radio" id="addCheckbox_EVC_(Electric_Vehicle_Charger)_Slow_Type" name="EVCSubCheckboxOptions" value="Slow Type"> Slow Type</label>
-                        </div><br>
-                        <label><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_Pumping_Station" value="Pumping Station" onclick="handleSubOptions('addCheckbox_Pumping_Station','pumpSubOptions')"> Pumping Station</label>
+                        </div>
+                        </div>
+
+                        <div id="PumpSection">
+                        <label>Pumping Station</label><br>
+                        <label><input type="radio" name="includePump" value="yes" onclick="toggleSection('pumpSubOptions', true)">Yes</label>
+                        <label><input type="radio" name="includePump" value="no" onclick="toggleSection('pumpSubOptions', false)">No</label>
+                        <label id="pumplabel"><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_Pumping_Station" value="Pumping Station" onclick="handleSubOptions('addCheckbox_Pumping_Station','pumpSubOptions')" checked> Pumping Station</label>
                         <div id="pumpSubOptions">
                             <label><input type="checkbox" id="addCheckbox_Pumping_Station_Location_of_Pumping_Station" name="pumpSubCheckboxOptions" value="Location of Pumping Station"> Location of Pumping Station</label><br>
                             <label><input type="checkbox" id="addCheckbox_Pumping_Station_Data_Sheet" name="pumpSubCheckboxOptions" value="Data Sheet"> Data Sheet</label><br>
                             <label><input type="checkbox" id="addCheckbox_Pumping_Station_Phases_of_supply_for_Pump" name="pumpSubCheckboxOptions" value="Phases of supply for Pump"> Phases of supply</label>
-                        </div><br>
-                        <label><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_Commercial_Unit" value="Commercial Unit" onclick="handleSubOptions('addCheckbox_Commercial_Unit','comSubOptions')"> Commercial Unit</label>
+                        </div>
+                        </div>
+
+                        <div id="comSection">
+                        <label>Commercial Supply</label><br>
+                        <label><input type="radio" name="includeCom" value="yes" onclick="toggleSection('comSubOptions', true)">Yes</label>
+                        <label><input type="radio" name="includeCom" value="no" onclick="toggleSection('comSubOptions', false)">No</label>
+                        <label id="comlabel"><input type="checkbox" name="addCheckboxOptions" id="addCheckbox_Commercial_Unit" value="Commercial Unit" onclick="handleSubOptions('addCheckbox_Commercial_Unit','comSubOptions')" checked> Commercial Unit</label>
                         <div id="comSubOptions">
                             <label><input type="checkbox" id="addCheckbox_Commercial_Unit_Location_of_Commercial" name="comSubCheckboxOptions" value="Location of Commercial"> Location of Commercial</label><br>
                             <label><input type="checkbox" id="addCheckbox_Commercial_Unit_Load_for_Commecial" name="comSubCheckboxOptions" value="Load for Commercial"> Load for Commercial</label><br>
